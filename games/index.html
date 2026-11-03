@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games | StarDancer and More from Stellar Drift</title>
+<meta name="description" content="Indie games from Stellar Drift, including StarDancer: an endless runner set in deep space with procedural oceans and a meditative rhythm.">
+<link rel="canonical" href="https://stellardrift.studio/games/">
+<meta name="theme-color" content="#0a0e1a">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stellar Drift">
+<meta property="og:url" content="https://stellardrift.studio/games/">
+<meta property="og:title" content="Games from Stellar Drift">
+<meta property="og:description" content="StarDancer and other indie games with meditative depth.">
+<meta property="og:image" content="https://stellardrift.studio/media/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stellardrift.studio/media/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "StarDancer",
+  "url": "https://stellardrift.studio/games/",
+  "description": "An endless runner set in deep space. Procedural oceans, ghost pathfinding, and a meditative rhythm at its core.",
+  "genre": ["Endless runner", "Indie"],
+  "author": { "@id": "https://stellardrift.studio/#org" },
+  "publisher": { "@type": "Organization", "name": "Stellar Drift", "url": "https://stellardrift.studio/" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/media/stellar_drift_logo_no-bg.ico">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="star-wrap"><canvas id="stars"></canvas></div>
+
+<header class="site-nav">
+  <a class="nav-brand" href="/" aria-label="Stellar Drift home"><img src="/media/stellar_drift_logo_no-bg.png" alt=""><span>Stellar Drift</span></a>
+  <ul class="nav-links">
+    <li><a href="/work/">Work with us</a></li>
+    <li><a href="/games/" aria-current="page">Games</a></li>
+  </ul>
+</header>
+
+<main>
+<section class="hero page-hero">
+  <p class="hero-kicker">Stellar Drift &middot; Games</p>
+  <h1 class="hero-tagline">Small worlds,<br><em>meditative depth</em></h1>
+  <p class="hero-lede">Indie games built to linger in your mind long after you put the controller down.</p>
+  <div class="hero-actions">
+    <a href="#stardancer" class="btn btn-primary">Meet StarDancer</a>
+    <a href="#orbit" class="btn btn-ghost">Get updates</a>
+  </div>
+  <div class="hero-divider"></div>
+</section>
+
+<section class="section" id="stardancer">
+  <div class="container">
+    <p class="section-label fade-in">Now in development</p>
+    <div class="cards">
+      <div class="card card-feature fade-in">
+        <p class="card-tag">Endless runner &middot; Godot 4</p>
+        <h2 class="card-name">StarDancer</h2>
+        <p class="card-desc">An endless runner set in deep space. Procedural oceans, ghost pathfinding, and a meditative rhythm at its core. Every run is a straight shot into the unknown: how far can you go?</p>
+        <!-- Add a screenshot, GIF or trailer here, plus a wishlist/itch.io link once there is one:
+        <a class="card-link" href="#" target="_blank" rel="noopener">Wishlist on Steam &rarr;</a>
+        -->
+      </div>
+    </div>
+    <p class="section-intro fade-in" style="margin: 2.5rem 0 0;">More worlds are in the works. Join the list below to hear about them first.</p>
+  </div>
+</section>
+
+<section class="section signup" id="orbit">
+  <div class="container">
+    <h2 class="section-heading fade-in">Stay in the orbit.</h2>
+    <p class="signup-sub fade-in">New releases, devlog updates, and the occasional dispatch from somewhere interesting.</p>
+    <form class="signup-form fade-in" id="signup-form" novalidate>
+      <input type="email" id="email-input" name="email" placeholder="your@email.com" aria-label="Email address" autocomplete="email" required maxlength="254">
+      <div class="hp" aria-hidden="true">
+        <input id="signup-company" name="company" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button class="btn btn-primary" type="submit" id="signup-btn">Subscribe</button>
+    </form>
+    <p class="form-status" id="signup-status" role="status" aria-live="polite"></p>
+    <p class="signup-note fade-in">Or reach us at <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a></p>
+    <p class="form-done" id="signup-done">&#10022; You&rsquo;re in. We&rsquo;ll be in touch.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>&copy; 2026 Stellar Drift</span>
+  <nav aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/work/">Work with us</a>
+    <a href="/about/">About Cody</a>
+    <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a>
+  </nav>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
