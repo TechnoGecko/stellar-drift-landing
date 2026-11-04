@@ -1,4 +1,4 @@
-/* Stellar Drift shared scripts: starfield, fade-ins, rotating headline, forms */
+/* Stellar Drift shared scripts: starfield, fade-ins, waveform, rotating headline, forms */
 (function() {
   var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   var reduceMotion = motionQuery.matches;
@@ -14,46 +14,85 @@
   var canvas = document.getElementById("stars");
   if (canvas) {
     var ctx = canvas.getContext("2d");
-    var layerA = [], layerB = [];
+    // Each page picks a sky with <body data-sky="...">
+    var skies = {
+      drift: { density: 1, scroll: 1, mouse: 1, tilt: 6 },    // degrees at the edge of the screen; subtle on purpose
+      warp: { density: 0.45, scroll: 0, mouse: 0.5, tilt: 3 },
+      pulse: { density: 0.8, scroll: 0.6, mouse: 0.5, tilt: 3 },
+      still: { density: 0.45, scroll: 0.25, mouse: 0, tilt: 0 }
+    };
+    var skyName = document.body.getAttribute("data-sky");
+    var sky = skies[skyName] || skies.drift;
+    var isWarp = skyName === "warp", isPulse = skyName === "pulse";
+    var BEAT_FRAMES = 45;          // about 80 bpm at 60fps
+    var WARP_SPEED = 0.0012;       // a slow, steady flight
+    var layerA = [], layerB = [], warpStars = [];
     var scrollY = 0, targetScroll = 0;
     var mouseX = 0, mouseY = 0, targetMX = 0, targetMY = 0;
     var tiltX = 0, tiltY = 0;      // kept between frames so the easing actually works
-    var MAX_TILT = 6;              // degrees at the edge of the screen; subtle on purpose
     var W, H, frame = 0, running = false;
 
+    var newWarpStar = function(z) {
+      return { x: Math.random() * 2 - 1, y: Math.random() * 2 - 1, z: z,
+        r: Math.random() * 1.1 + 0.4, a: Math.random() * 0.4 + 0.4 };
+    };
+
     var build = function() {
-      layerA = []; layerB = [];
-      var total = Math.floor((W * H) / 5500);
+      layerA = []; layerB = []; warpStars = [];
+      var total = Math.floor((W * H) / 5500 * sky.density);
+      if (isWarp) {
+        for (var k = 0; k < total; k++) warpStars.push(newWarpStar(Math.random() * 0.98 + 0.02));
+        return;
+      }
       for (var i = 0; i < Math.floor(total * 0.65); i++) {
         layerA.push({ baseX: Math.random() * W, baseY: Math.random() * H,
           r: Math.random() * 1.1 + 0.3, a: Math.random() * 0.35 + 0.1,
           speed: Math.random() * 0.003 + 0.001, phase: Math.random() * Math.PI * 2,
-          scrollP: 0.1, mouseP: 0.018 });
+          scrollP: 0.1, mouseP: 0.018, beat: 0.1 });
       }
       for (var j = 0; j < Math.floor(total * 0.35); j++) {
         layerB.push({ baseX: Math.random() * W, baseY: Math.random() * H,
           r: Math.random() * 1.8 + 1.0, a: Math.random() * 0.45 + 0.35,
           speed: Math.random() * 0.004 + 0.002, phase: Math.random() * Math.PI * 2,
-          scrollP: 0.28, mouseP: 0.045 });
+          scrollP: 0.28, mouseP: 0.045, beat: 0.35 });
       }
     };
 
     var drawLayer = function(stars) {
+      // Falls off sharply after each beat, like a drum hit
+      var hit = isPulse && !reduceMotion ? Math.pow(1 - (frame % BEAT_FRAMES) / BEAT_FRAMES, 3) : 0;
       for (var i = 0; i < stars.length; i++) {
         var s = stars[i];
-        var scrollDrift = (scrollY * s.scrollP) % H;
+        var scrollDrift = (scrollY * s.scrollP * sky.scroll) % H;
         var y = ((s.baseY - scrollDrift) % H + H) % H;
-        var x = ((s.baseX - mouseX * s.mouseP) % W + W) % W;
-        var pulse = reduceMotion ? s.a : s.a + Math.sin(frame * s.speed + s.phase) * 0.07;
+        var x = ((s.baseX - mouseX * s.mouseP * sky.mouse) % W + W) % W;
+        var pulse = reduceMotion ? s.a : s.a + Math.sin(frame * s.speed + s.phase) * 0.07 + hit * s.beat * 0.6;
         ctx.beginPath();
-        ctx.arc(x, y, s.r, 0, Math.PI * 2);
+        ctx.arc(x, y, s.r * (1 + hit * s.beat), 0, Math.PI * 2);
         ctx.fillStyle = "rgba(248,247,244," + Math.min(1, pulse) + ")";
         ctx.fill();
       }
     };
 
+    // Stars fly outward from the center of the screen, drawn as short streaks
+    var drawWarp = function() {
+      var cx = W / 2, cy = H / 2;
+      ctx.lineCap = "round";
+      for (var i = 0; i < warpStars.length; i++) {
+        var s = warpStars[i];
+        var tail = s.z + 0.012;
+        ctx.beginPath();
+        ctx.moveTo(cx + (s.x / tail) * cx * 0.5, cy + (s.y / tail) * cy * 0.5);
+        ctx.lineTo(cx + (s.x / s.z) * cx * 0.5, cy + (s.y / s.z) * cy * 0.5);
+        ctx.lineWidth = s.r;
+        ctx.strokeStyle = "rgba(248,247,244," + Math.min(1, (1.05 - s.z) * s.a) + ")";
+        ctx.stroke();
+      }
+    };
+
     var render = function() {
       ctx.clearRect(0, 0, W, H);
+      if (isWarp) { drawWarp(); return; }
       drawLayer(layerA);
       drawLayer(layerB);
     };
@@ -65,9 +104,17 @@
       mouseY += (targetMY - mouseY) * 0.06;
       var nx = mouseX / (W / 2);   // -1 .. 1 across the screen
       var ny = mouseY / (H / 2);
-      tiltX += (-ny * MAX_TILT - tiltX) * 0.06;
-      tiltY += (nx * MAX_TILT - tiltY) * 0.06;
+      tiltX += (-ny * sky.tilt - tiltX) * 0.06;
+      tiltY += (nx * sky.tilt - tiltY) * 0.06;
       canvas.style.transform = "rotateX(" + tiltX.toFixed(3) + "deg) rotateY(" + tiltY.toFixed(3) + "deg)";
+      if (isWarp) {
+        // Scrolling gives the flight a gentle push
+        var boost = Math.min(0.006, Math.abs(targetScroll - scrollY) * 0.00002);
+        for (var i = 0; i < warpStars.length; i++) {
+          warpStars[i].z -= WARP_SPEED + boost;
+          if (warpStars[i].z <= 0.02) warpStars[i] = newWarpStar(1);
+        }
+      }
       frame++;
       render();
       requestAnimationFrame(draw);
@@ -121,6 +168,18 @@
   } else {
     fades.forEach(function(el) { el.classList.add("visible"); });
   }
+
+  /* ---------- Waveform (/music): loud and dense on the left, settling to quiet on the right ---------- */
+  document.querySelectorAll("[data-wave]").forEach(function(wave) {
+    var BARS = 72;
+    for (var i = 0; i < BARS; i++) {
+      var t = i / (BARS - 1);
+      var jitter = Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 1;  // fixed "random", same on every load
+      var bar = document.createElement("span");
+      bar.style.height = Math.max(3, (Math.pow(1 - t, 1.6) * (0.35 + jitter * 0.65) + 0.03) * 100) + "%";
+      wave.appendChild(bar);
+    }
+  });
 
   /* ---------- Rotating headline ---------- */
   document.querySelectorAll("[data-rotator]").forEach(function(rotator) {
@@ -234,7 +293,7 @@
 
       if (!data.name) { setStatus(status, "Please add your name.", true); $("inq-name").focus(); return; }
       if (!isEmail(data.email)) { setStatus(status, "Please enter a valid email address.", true); $("inq-email").focus(); return; }
-      if (data.project.length < 10) { setStatus(status, "Tell us a little more about the project.", true); $("inq-project").focus(); return; }
+      if (data.project.length < 10) { setStatus(status, "Tell me a little more about the project.", true); $("inq-project").focus(); return; }
 
       btn.disabled = true;
       btn.textContent = "Sending...";
@@ -242,8 +301,6 @@
       postJSON("/api/inquiry", data)
         .then(function() {
           inquiryForm.style.display = "none";
-          var sub = document.querySelector(".inquiry-sub");
-          if (sub) sub.style.display = "none";
           $("inquiry-done").style.display = "block";
         })
         .catch(function(err) {

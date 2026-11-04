@@ -1,14 +1,25 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "stellar-drift-landing",
+  "main": "src/worker.js",
   "compatibility_date": "2026-05-25",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Pages go through the Worker so it can apply SHOW_MUSIC. Images, CSS, and JS skip it.
+    "run_worker_first": ["/*", "!/assets/*", "!/media/*"]
   },
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  "vars": {
+    "NOTIFY_EMAIL": "stellar_drift_studio@pm.me",
+    // Set to true and redeploy to bring back the music section (see SETUP.md)
+    "SHOW_MUSIC": false
+  }
+  // Uncomment with your namespace id to store submissions (see SETUP.md):
+  // ,"kv_namespaces": [{ "binding": "SUBMISSIONS", "id": "YOUR_NAMESPACE_ID" }]
 }

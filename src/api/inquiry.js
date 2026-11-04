@@ -1,4 +1,4 @@
-// POST /api/inquiry  (Cloudflare Pages Function)
+// POST /api/inquiry  (routed from src/worker.js)
 //
 // Handles the "Have a project in mind?" form. Same setup as subscribe.js:
 //   SUBMISSIONS     KV namespace binding: stores every inquiry
@@ -28,7 +28,7 @@ export async function onRequestPost({ request, env }) {
 
   if (!clean.name) return json({ ok: false, error: "Please add your name." }, 400);
   if (!isEmail(clean.email)) return json({ ok: false, error: "Please enter a valid email address." }, 400);
-  if (clean.project.length < 10) return json({ ok: false, error: "Tell us a little more about the project." }, 400);
+  if (clean.project.length < 10) return json({ ok: false, error: "Tell me a little more about the project." }, 400);
 
   const at = new Date().toISOString();
   const record = { ...clean, at, country: request.cf?.country || null };

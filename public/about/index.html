@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Cody Reeves | Stellar Drift</title>
+<meta name="description" content="Cody Reeves is the developer, game maker, and drummer behind Stellar Drift.">
+<link rel="canonical" href="https://stellardrift.studio/about/">
+<meta name="theme-color" content="#0a0e1a">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Stellar Drift">
+<meta property="og:url" content="https://stellardrift.studio/about/">
+<meta property="og:title" content="About Cody Reeves">
+<meta property="og:description" content="The developer, game maker, and drummer behind Stellar Drift.">
+<meta property="og:image" content="https://stellardrift.studio/media/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stellardrift.studio/media/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/media/stellar_drift_logo_no-bg.ico">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+</head>
+<body data-sky="drift">
+<div id="star-wrap"><canvas id="stars"></canvas></div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="Stellar Drift home"><img src="/media/logo-nav.png" alt=""><span>Stellar Drift</span></a>
+    <ul class="nav-links">
+      <li><a href="/games/">Games</a></li>
+      <li data-if-music><a href="/music/">Music</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/about/" aria-current="page">About</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<div class="container about-grid">
+  <div class="about-photo rise">
+    <div class="media ratio-4x5 ph">Photo of Cody</div>
+  </div>
+
+  <section>
+    <h1 class="about-title rise rise-2">Hi, I&rsquo;m Cody.</h1>
+    <div class="prose rise rise-3">
+      <p data-if-music>I make games, software, and music, and Stellar Drift is the one place all of it lives.</p>
+      <p data-unless-music>I make games and software, and Stellar Drift is the one place all of it lives.</p>
+      <p>I&rsquo;m a self-taught developer with five years of building for real clients. That&rsquo;s the <a href="/work/">work I take on</a> here: Shopify stores, websites, and custom software for artists and small brands, where you deal directly with me.</p>
+      <p>On the creative side, I&rsquo;m building <a href="/games/">StarDancer</a>, an endless runner set in deep space, in Godot. I also play <a href="/music/">technical death metal drums</a>, and explore where that kind of playing meets mindful practice on Tao of Drumming.</p>
+      <p data-if-music>I&rsquo;m also a Reiki Level 3 practitioner, which is where the soundscapes come from, along with Healing Journal, a shared journaling app I&rsquo;m building for energy healing practitioners.</p>
+      <p data-unless-music>I&rsquo;m also a Reiki Level 3 practitioner, which led to Healing Journal, a shared journaling app I&rsquo;m building for energy healing practitioners.</p>
+      <p>Want to talk about any of it? Email me at <a href="mailto:stellar_drift_studio@pm.me?subject=Hello%20Cody">stellar_drift_studio@pm.me</a>.</p>
+      <!-- Add your profiles here once you have the URLs:
+      <p><a href="https://youtube.com/@YOUR-CHANNEL" target="_blank" rel="noopener">YouTube</a> &middot; <a href="https://github.com/TechnoGecko" target="_blank" rel="noopener">GitHub</a> &middot; <a href="https://instagram.com/YOUR-HANDLE" target="_blank" rel="noopener">Instagram</a></p>
+      -->
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <span>&copy; 2026 Stellar Drift</span>
+  <nav aria-label="Footer">
+    <a href="/games/">Games</a>
+    <a href="/music/" data-if-music>Music</a>
+    <a href="/work/">Work</a>
+    <a href="/about/">About</a>
+    <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a>
+  </nav>
+</footer>
+
+<script src="/assets/site.js?v=2" defer></script>
+</body>
+</html>

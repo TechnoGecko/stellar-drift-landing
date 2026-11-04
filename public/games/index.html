@@ -36,52 +36,63 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="/media/stellar_drift_logo_no-bg.ico">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=2">
 </head>
-<body>
+<body data-sky="warp" data-section="games">
 <div id="star-wrap"><canvas id="stars"></canvas></div>
 
 <header class="site-nav">
-  <a class="nav-brand" href="/" aria-label="Stellar Drift home"><img src="/media/stellar_drift_logo_no-bg.png" alt=""><span>Stellar Drift</span></a>
-  <ul class="nav-links">
-    <li><a href="/work/">Work with us</a></li>
-    <li><a href="/games/" aria-current="page">Games</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="Stellar Drift home"><img src="/media/logo-nav.png" alt=""><span>Stellar Drift</span></a>
+    <ul class="nav-links">
+      <li><a href="/games/" aria-current="page">Games</a></li>
+      <li data-if-music><a href="/music/">Music</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+  </div>
 </header>
 
 <main>
-<section class="hero page-hero">
-  <p class="hero-kicker">Stellar Drift &middot; Games</p>
-  <h1 class="hero-tagline">Small worlds,<br><em>meditative depth</em></h1>
-  <p class="hero-lede">Indie games built to linger in your mind long after you put the controller down.</p>
-  <div class="hero-actions">
-    <a href="#stardancer" class="btn btn-primary">Meet StarDancer</a>
-    <a href="#orbit" class="btn btn-ghost">Get updates</a>
-  </div>
-  <div class="hero-divider"></div>
-</section>
+<div class="container" id="stardancer">
+  <section class="game-head">
+    <p class="kicker rise">Now in development</p>
+    <h1 class="game-title rise rise-2">StarDancer</h1>
+    <p class="game-meta rise rise-3"><span>Endless runner</span><span>Godot 4</span><span>Deep space</span></p>
+  </section>
 
-<section class="section" id="stardancer">
-  <div class="container">
-    <p class="section-label fade-in">Now in development</p>
-    <div class="cards">
-      <div class="card card-feature fade-in">
-        <p class="card-tag">Endless runner &middot; Godot 4</p>
-        <h2 class="card-name">StarDancer</h2>
-        <p class="card-desc">An endless runner set in deep space. Procedural oceans, ghost pathfinding, and a meditative rhythm at its core. Every run is a straight shot into the unknown: how far can you go?</p>
-        <!-- Add a screenshot, GIF or trailer here, plus a wishlist/itch.io link once there is one:
-        <a class="card-link" href="#" target="_blank" rel="noopener">Wishlist on Steam &rarr;</a>
-        -->
-      </div>
+  <div class="media ratio-16x9 ph rise rise-3">StarDancer trailer or gameplay footage</div>
+
+  <section class="game-intro">
+    <p class="game-desc fade-in">An endless runner set in deep space. Procedural oceans, ghost pathfinding, and a meditative rhythm at its core. Every run is a straight shot into the unknown: how far can you go?</p>
+    <div class="actions fade-in">
+      <!-- Add a wishlist/itch.io link once there is one:
+      <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Wishlist on Steam</a>
+      -->
+      <a href="#orbit" class="btn btn-primary">Get updates</a>
     </div>
-    <p class="section-intro fade-in" style="margin: 2.5rem 0 0;">More worlds are in the works. Join the list below to hear about them first.</p>
-  </div>
-</section>
+  </section>
 
-<section class="section signup" id="orbit">
+  <section class="features" aria-label="What's in StarDancer">
+    <figure class="feature fade-in">
+      <div class="media ratio-4x3 ph">Screenshot: procedural oceans</div>
+      <figcaption>Procedural oceans</figcaption>
+    </figure>
+    <figure class="feature fade-in">
+      <div class="media ratio-4x3 ph">Screenshot: ghost pathfinding</div>
+      <figcaption>Ghost pathfinding</figcaption>
+    </figure>
+    <figure class="feature fade-in">
+      <div class="media ratio-4x3 ph">Screenshot: a run in motion</div>
+      <figcaption>A meditative rhythm</figcaption>
+    </figure>
+  </section>
+</div>
+
+<section class="section signup" id="orbit" style="margin-top: 6rem;">
   <div class="container">
     <h2 class="section-heading fade-in">Stay in the orbit.</h2>
-    <p class="signup-sub fade-in">New releases, devlog updates, and the occasional dispatch from somewhere interesting.</p>
+    <p class="signup-sub fade-in">More small worlds are in the works. Get new releases, devlog updates, and the occasional dispatch from somewhere interesting.</p>
     <form class="signup-form fade-in" id="signup-form" novalidate>
       <input type="email" id="email-input" name="email" placeholder="your@email.com" aria-label="Email address" autocomplete="email" required maxlength="254">
       <div class="hp" aria-hidden="true">
@@ -90,8 +101,8 @@
       <button class="btn btn-primary" type="submit" id="signup-btn">Subscribe</button>
     </form>
     <p class="form-status" id="signup-status" role="status" aria-live="polite"></p>
-    <p class="signup-note fade-in">Or reach us at <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a></p>
-    <p class="form-done" id="signup-done">&#10022; You&rsquo;re in. We&rsquo;ll be in touch.</p>
+    <p class="signup-note fade-in">Or reach me at <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a></p>
+    <p class="form-done" id="signup-done">&#10022; You&rsquo;re in. I&rsquo;ll be in touch.</p>
   </div>
 </section>
 </main>
@@ -99,13 +110,14 @@
 <footer>
   <span>&copy; 2026 Stellar Drift</span>
   <nav aria-label="Footer">
-    <a href="/">Home</a>
-    <a href="/work/">Work with us</a>
-    <a href="/about/">About Cody</a>
+    <a href="/games/">Games</a>
+    <a href="/music/" data-if-music>Music</a>
+    <a href="/work/">Work</a>
+    <a href="/about/">About</a>
     <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a>
   </nav>
 </footer>
 
-<script src="/assets/site.js" defer></script>
+<script src="/assets/site.js?v=2" defer></script>
 </body>
 </html>

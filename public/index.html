@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-if-music>Stellar Drift | Games, Software &amp; Music by Cody Reeves</title>
+<title data-unless-music>Stellar Drift | Games &amp; Software by Cody Reeves</title>
+<meta data-if-music name="description" content="Stellar Drift is where Cody Reeves makes indie games, software, and music, and builds Shopify stores and websites for artists and small brands.">
+<meta data-unless-music name="description" content="Stellar Drift is where Cody Reeves makes indie games and software, and builds Shopify stores and websites for artists and small brands.">
+<link rel="canonical" href="https://stellardrift.studio/">
+<meta name="theme-color" content="#0a0e1a">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stellar Drift">
+<meta property="og:url" content="https://stellardrift.studio/">
+<meta data-if-music property="og:title" content="Stellar Drift | Games, Software &amp; Music">
+<meta data-unless-music property="og:title" content="Stellar Drift | Games &amp; Software">
+<meta data-if-music property="og:description" content="Indie games, software, and music by Cody Reeves, plus Shopify stores and websites for artists and small brands.">
+<meta data-unless-music property="og:description" content="Indie games and software by Cody Reeves, plus Shopify stores and websites for artists and small brands.">
+<meta property="og:image" content="https://stellardrift.studio/media/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stellar Drift: games, software and music from the edge.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stellardrift.studio/media/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://stellardrift.studio/#org",
+      "name": "Stellar Drift",
+      "url": "https://stellardrift.studio/",
+      "logo": "https://stellardrift.studio/media/stellar_drift_logo_no-bg.png",
+      "email": "stellar_drift_studio@pm.me",
+      "founder": { "@type": "Person", "name": "Cody Reeves" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://stellardrift.studio/#website",
+      "name": "Stellar Drift",
+      "url": "https://stellardrift.studio/",
+      "publisher": { "@id": "https://stellardrift.studio/#org" }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="/media/stellar_drift_logo_no-bg.ico">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+</head>
+<body data-sky="drift">
+<div id="star-wrap"><canvas id="stars"></canvas></div>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="Stellar Drift home"><img src="/media/logo-nav.png" alt=""><span>Stellar Drift</span></a>
+    <ul class="nav-links">
+      <li><a href="/games/">Games</a></li>
+      <li data-if-music><a href="/music/">Music</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/about/">About</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<div class="container">
+  <section class="home-intro">
+    <div>
+      <h1 data-if-music class="home-title rise">Games, software, &amp;<br><em>music from the edge</em></h1>
+      <h1 data-unless-music class="home-title rise">Games &amp; software<br><em>from the edge</em></h1>
+      <p class="lede rise rise-2">I&rsquo;m Cody Reeves. Stellar Drift is where I make all of it. Pick a door.</p>
+    </div>
+    <img class="home-logo rise rise-3" src="/media/logo-mark.png" alt="Stellar Drift logo" width="170" height="170">
+  </section>
+
+  <nav class="doors rise rise-3" aria-label="Sections">
+    <a class="door door-games" href="/games/">
+      <span class="door-name">Games</span>
+      <span class="door-desc">StarDancer, an endless runner through deep space, now in development.</span>
+      <span class="door-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a data-if-music class="door door-music" href="/music/">
+      <span class="door-name">Music</span>
+      <span class="door-desc">Technical death metal drumming, Reiki-influenced soundscapes, and everything in between.</span>
+      <span class="door-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="door door-work" href="/work/">
+      <span class="door-name">Work</span>
+      <span class="door-desc">Shopify stores, websites, and custom software for artists and small brands. Hire me.</span>
+      <span class="door-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <a class="door door-about" href="/about/">
+      <span class="door-name">About</span>
+      <span class="door-desc">One person, a drum kit, and too many projects.</span>
+      <span class="door-arrow" aria-hidden="true">&rarr;</span>
+    </a>
+  </nav>
+</div>
+
+<section class="section" id="building">
+  <div class="container">
+    <p class="section-label fade-in">What I&rsquo;m building</p>
+    <h2 class="section-heading fade-in">A few things in motion right now.</h2>
+    <div class="cards">
+      <a class="card fade-in" href="/games/">
+        <p class="card-tag">Game &middot; Godot</p>
+        <h3 class="card-name">StarDancer</h3>
+        <p class="card-desc">An endless runner set in deep space. Procedural oceans, ghost pathfinding, and a meditative rhythm at its core.</p>
+        <span class="card-link">More on StarDancer &rarr;</span>
+      </a>
+      <a data-if-music class="card fade-in" href="/music/">
+        <p class="card-tag">Music &middot; YouTube</p>
+        <h3 class="card-name">Tao of Drumming</h3>
+        <p class="card-desc">Exploring the intersection of technical drumming and mindful practice &mdash; lessons, stems, and the philosophy behind the kit.</p>
+        <span class="card-link">More on Tao of Drumming &rarr;</span>
+      </a>
+      <a class="card fade-in" href="/work/#coldguard">
+        <p class="card-tag">Software &middot; Shopify App</p>
+        <h3 class="card-name">ColdGuard</h3>
+        <p class="card-desc">Intelligent ice pack recommendations at checkout &mdash; protecting temperature-sensitive orders using real shipping route weather data.</p>
+        <span class="card-link">More on ColdGuard &rarr;</span>
+      </a>
+      <div class="card fade-in">
+        <p class="card-tag">Wellness &middot; Software</p>
+        <h3 class="card-name">Healing Journal</h3>
+        <p class="card-desc">A shared journaling app for energy healing practitioners &mdash; built from a Reiki Level 3 perspective.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>&copy; 2026 Stellar Drift</span>
+  <nav aria-label="Footer">
+    <a href="/games/">Games</a>
+    <a href="/music/" data-if-music>Music</a>
+    <a href="/work/">Work</a>
+    <a href="/about/">About</a>
+    <a href="mailto:stellar_drift_studio@pm.me">stellar_drift_studio@pm.me</a>
+  </nav>
+</footer>
+
+<script src="/assets/site.js?v=2" defer></script>
+</body>
+</html>

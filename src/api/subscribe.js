@@ -1,6 +1,6 @@
-// POST /api/subscribe  (Cloudflare Pages Function)
+// POST /api/subscribe  (routed from src/worker.js)
 //
-// Saves a newsletter signup. Uses whichever of these you've set up in the Pages project:
+// Saves a newsletter signup. Uses whichever of these you've set up on the Worker:
 //   SUBMISSIONS     KV namespace binding: stores every signup (recommended)
 //   RESEND_API_KEY  secret: also emails you about each signup
 //   NOTIFY_EMAIL    where those emails go

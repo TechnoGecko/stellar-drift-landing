@@ -1,7 +1,4 @@
-/about/
-  X-Robots-Tag: noindex, nofollow
-
-/about/*
+/resume/*
   X-Robots-Tag: noindex, nofollow
 
 /assets/*
