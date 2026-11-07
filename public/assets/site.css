@@ -187,7 +187,7 @@ main { position: relative; z-index: 1; }
   padding: 1.15rem 0;
   border-bottom: 1px solid var(--white-ghost2);
   text-decoration: none;
-  transition: padding 0.25s ease, background 0.25s ease;
+  transition: background 0.25s ease;
 }
 .door-games { --door: var(--cyan); }
 .door-music { --door: var(--violet); }
@@ -195,12 +195,12 @@ main { position: relative; z-index: 1; }
   font-family: "DM Serif Display", serif;
   font-size: clamp(1.9rem, 3.6vw, 2.6rem);
   line-height: 1.15;
-  transition: color 0.25s ease;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 .door-desc { color: var(--white-dim); font-size: 0.95rem; }
 .door-arrow { color: var(--door); font-size: 1.25rem; }
-.door:hover { padding-left: 0.75rem; padding-right: 0.75rem; background: var(--white-ghost); }
-.door:hover .door-name { color: var(--door); }
+.door:hover { background: var(--white-ghost); }
+.door:hover .door-name { color: var(--door); transform: translateX(0.75rem); }
 
 /* ---------- Service tiles ---------- */
 .tiles { display: grid; gap: 2px; border-radius: 12px; overflow: hidden; }
